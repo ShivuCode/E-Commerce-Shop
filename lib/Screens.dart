@@ -2,7 +2,8 @@ import 'package:e_commerce/Pages/Account.dart';
 import 'package:e_commerce/Pages/CategoriesPage.dart';
 import 'package:e_commerce/Pages/EarningPage.dart';
 import 'package:e_commerce/Pages/HomePage.dart';
-import 'package:e_commerce/Pages/SharedPage.dart';
+import 'package:e_commerce/Pages/SearchPage.dart';
+import 'package:e_commerce/Pages/WishList.dart';
 import 'package:e_commerce/constants.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -18,7 +19,7 @@ class _ScreensState extends State<Screens> with TickerProviderStateMixin {
   late double size = MediaQuery.of(context).size.width;
   int currentPage = 0;
   late TabController controller;
-  List pages = const [
+  List pages =  [
     HomePage(),
     CategoriesPage(),
     SharedPage(),
@@ -32,7 +33,6 @@ class _ScreensState extends State<Screens> with TickerProviderStateMixin {
       currentPage = i;
     });
   }
-
   @override
   void initState() {
     controller = TabController(length: 5, vsync: this);
@@ -70,7 +70,7 @@ class _ScreensState extends State<Screens> with TickerProviderStateMixin {
                   ),
                 ),
                 TextButton(
-                  child: Text("Shared", style: buttonStyle),
+                  child: Text("Search", style: buttonStyle),
                   onPressed: () {
                     change(2);
                   },
@@ -94,11 +94,12 @@ class _ScreensState extends State<Screens> with TickerProviderStateMixin {
               title: const Text("VStore"),
               centerTitle: true,
               actions: [
-
                   IconButton(
-                      icon: const Icon(Icons.notifications_none_outlined,
+                      icon: const Icon(CupertinoIcons.heart,
                           color: Colors.white),
-                      onPressed: () {}),
+                      onPressed: () {
+                        nextScreen(context, const WishList());
+                      }),
                   IconButton(
                     icon: const Icon(Icons.shopping_bag_outlined,
                         color: Colors.white),
@@ -135,7 +136,7 @@ class _ScreensState extends State<Screens> with TickerProviderStateMixin {
                       label: "Categories"),
                   BottomNavigationBarItem(
                       icon: Icon(CupertinoIcons.share, color: Colors.grey),
-                      label: "Shared",
+                      label: "Search",
                       activeIcon: Icon(
                         CupertinoIcons.share_solid,
                         color: Colors.grey,
@@ -156,4 +157,5 @@ class _ScreensState extends State<Screens> with TickerProviderStateMixin {
           : null,
     );
   }
+
 }

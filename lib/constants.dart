@@ -10,6 +10,17 @@ Widget width(double w){
     width: w,
   );
 }
+late Map<String,dynamic> stock;
+List menList=[];
+List womenList=[];
+List allItems=[];
+List homeList=[];
+
+List addCard=[];
+List wishList=[];
+List orderList=[];
+List recent=[];
+
 void nextScreen(context, page) {
   Navigator.push(context, MaterialPageRoute(builder: (_) => page));
 }

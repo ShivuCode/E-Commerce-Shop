@@ -1,0 +1,290 @@
+{
+  "men": [
+    {
+      "name": "EyeBogler ",
+      "image": "https://cdn.shopify.com/s/files/1/0769/5345/products/25183982-df2c-42a2-abd0-5041f50e5a43_580x.jpg?v=1586111517",
+      "rating": "4.2",
+      "dec": "Men Printed Hooded Neck Blue, Black T-Shirt",
+      "price": 999,
+      "defaultSize": "L",
+      "size": [
+        "S",
+        "L",
+        "M",
+        "XL",
+        "XLL"
+      ],
+      "like": false
+    },
+    {
+      "name": "VeBNoR  ",
+      "image": "https://rukminim1.flixcart.com/image/832/832/xif0q/shirt/c/o/e/s-st10-vebnor-original-imagzdsu8hkehz8f.jpeg?q=70",
+      "rating": "4.7",
+      "dec": "Men Regular Fit Printed Spread Collar Casual Shirt",
+      "price": 2999,
+      "defaultSize": "M ",
+      "size": [
+        "S",
+        "M",
+        "XL"
+      ],
+      "like": false
+    },
+    {
+      "name": "Try This  ",
+      "image": "https://rukminim1.flixcart.com/image/832/832/kxdl3m80/t-shirt/y/l/u/xs-cwt-try-this-original-imag9uejcsqcmdzq.jpeg?q=70",
+      "rating": "4.2",
+      "dec": "Men Printed Hooded Neck Blue, Black T-Shirt",
+      "price": 999,
+      "defaultSize": "L",
+      "size": [
+        "S",
+        "L",
+        "M",
+        "XL",
+        "XLL"
+      ],
+      "like": false
+    },
+    {
+      "name": "Vitaan  ",
+      "image": "https://rukminim1.flixcart.com/image/832/832/xif0q/t-shirt/h/i/0/s-stable01-vitaan-original-imagnfa3gdydj7c8.jpeg?q=70",
+      "rating": "3.6",
+      "dec": "Men Printed Round Neck Grey T-Shirt",
+      "price": 1999,
+      "defaultSize": "L",
+      "size": [
+        "S",
+        "L",
+        "M",
+        "XL"
+      ],
+      "like": false
+    },
+    {
+      "name": "fuBur ",
+      "image": "https://rukminim1.flixcart.com/image/832/832/xif0q/shirt/7/k/2/xl-kcsh-fo-1647-ma-fubar-original-imaghehzpwgjzg2y.jpeg?q=70",
+      "rating": "3.2",
+      "dec": "Men Slim Fit Solid Spread Collar Formal Shirt",
+      "price": 4999,
+      "defaultSize": "L",
+      "size": [
+        "S",
+        "L",
+        "M",
+        "XL",
+        "XLL"
+      ],
+      "like": false
+    }
+  ],
+  "women": [
+    {
+      "name": "Showoff  ",
+      "image": "https://rukminim1.flixcart.com/image/832/832/xif0q/kurta/4/c/n/m-skc-7902-olive-showoff-original-imaggum4zzeq2pgh.jpeg?q=70",
+      "rating": "4.2",
+      "dec": "Women Embellished Georgette A-line Kurta  (Dark Green)",
+      "price": 8999,
+      "defaultSize": "M",
+      "size": [
+        "S",
+        "L",
+        "M",
+        "XL",
+        "XLL"
+      ],
+      "like": false
+    },
+    {
+      "name": "DIVENA ",
+      "image": "https://rukminim1.flixcart.com/image/832/832/kpsnzww0/kurta/c/x/6/3xl-dk0592-divena-original-imag3y5cdxthqkae.jpeg?q=70",
+      "rating": "4.8",
+      "dec": "Pack of 2 Women Floral Print Cotton Blend Anarkali Kurta  (Pink)",
+      "price": 9999,
+      "defaultSize": "L",
+      "size": [
+        "S",
+        "L",
+        "M",
+        "XLL"
+      ],
+      "like": false
+    },
+    {
+      "name": "VERO MODA  ",
+      "image": "https://rukminim1.flixcart.com/image/832/832/xif0q/dress/c/w/m/s-na-123047201-vero-moda-original-imagz864fzzbnqfq.jpeg?q=70",
+      "rating": "3.8",
+      "dec": "Women Shift Purple Dress",
+      "price": 10999,
+      "defaultSize": "L",
+      "size": [
+        "",
+        "L",
+        "M",
+        "XL",
+        "XLL"
+      ],
+      "like": false
+    },
+    {
+      "name": "SASSAFRAS  ",
+      "image": "https://rukminim1.flixcart.com/image/832/832/xif0q/dress/c/7/f/xl-sfsets9720-sassafras-original-imagzvfydavf9ba4.jpeg?q=70",
+      "rating": "4.3",
+      "dec": "Women Co-ords Black Dress",
+      "price": 20999,
+      "defaultSize": "M",
+      "size": [
+        "M",
+        "XL",
+        "XLL"
+      ],
+      "like": false
+    },
+    {
+      "name": "Tokyo Talkies  ",
+      "image": "https://rukminim1.flixcart.com/image/832/832/kzegk280/dress/a/1/2/l-ttj6006608-tokyo-talkies-original-imagbfyrhdraabse.jpeg?q=70",
+      "rating": "4.2",
+      "dec": "Women Ribbed Yellow Dress",
+      "price": 999,
+      "defaultSize": "L",
+      "size": [
+        "S",
+        "L",
+        "M",
+        "XL",
+        "XLL"
+      ],
+      "like": false
+    },
+    {
+      "name": "Tokyo Talkies  ",
+      "image": "https://rukminim1.flixcart.com/image/832/832/kzegk280/dress/a/1/2/l-ttj6006608-tokyo-talkies-original-imagbfyrhdraabse.jpeg?q=70",
+      "rating": "3",
+      "dec": "Women Ribbed Yellow Dress",
+      "price": 999,
+      "defaultSize": "L",
+      "size": [
+        "S",
+        "L",
+        "M",
+        "XL",
+        "XLL"
+      ],
+      "like": false
+    },
+    {
+      "name": "Tokyo Talkies  ",
+      "image": "https://rukminim1.flixcart.com/image/832/832/kwjkuq80/dress/q/q/h/l-ttj6006053-tokyo-talkies-original-imag96yt8s6pys6z.jpeg?q=70",
+      "rating": "4",
+      "dec": "Women Ribbed Maroon Dress",
+      "price": 999,
+      "defaultSize": "L",
+      "size": [
+        "S",
+        "L",
+        "M",
+        "XL",
+        "XLL"
+      ],
+      "like": false
+    },
+    {
+      "name": "Manojaava ",
+      "image": "https://rukminim1.flixcart.com/image/832/832/kixgtjk0-0/dress/9/x/j/l-1iqgwnwne-iqraar-original-imafyhwv9kwqax7t.jpeg?q=70",
+      "rating": "4.2",
+      "dec": "Women Fit and Flare Marron Dress",
+      "price": 999,
+      "defaultSize": "L",
+      "size": [
+        "S",
+        "L",
+        "M",
+        "XL",
+        "XLL"
+      ],
+      "like": false
+    },
+    {
+      "name": "Manojaava ",
+      "image": "https://rukminim1.flixcart.com/image/832/832/kixgtjk0-0/dress/p/x/r/m-6iqgwngry-iqraar-original-imafyhwvpeb2zhuf.jpeg?q=70",
+      "rating": "4.2",
+      "dec": "Women Fit and Flare Grey Dress",
+      "price": 999,
+      "defaultSize": "L",
+      "size": [
+        "S",
+        "L",
+        "M",
+        "XL",
+        "XLL"
+      ],
+      "like": false
+    },
+    {
+      "name": "Manojaava ",
+      "image": "https://rukminim1.flixcart.com/image/832/832/kixgtjk0-0/dress/h/a/o/xxl-8iqgwnblck-iqraar-original-imafyhwvhmaqgz2x.jpeg?q=70",
+      "rating": "4.2",
+      "dec": "Women Fit and Flare Black Dress",
+      "price": 999,
+      "defaultSize": "L",
+      "size": [
+        "S",
+        "L",
+        "M",
+        "XL",
+        "XLL"
+      ],
+      "like": false
+    },
+    {
+      "name": "Manojaava ",
+      "image": "https://rukminim1.flixcart.com/image/832/832/kyj0vbk0/dress/q/x/0/m-60iqgwnbpnk-iqraar-original-imagaqs7chzxvg3x.jpeg?q=70",
+      "rating": "4.2",
+      "dec": "Women Fit and Flare Pink Dress",
+      "price": 999,
+      "defaultSize": "L",
+      "size": [
+        "S",
+        "L",
+        "M",
+        "XL",
+        "XLL"
+      ],
+      "like": false
+    }
+  ],
+  "home": [
+    {
+      "name": "EyeBogler ",
+      "image": "https://cdn.shopify.com/s/files/1/0769/5345/products/25183982-df2c-42a2-abd0-5041f50e5a43_580x.jpg?v=1586111517",
+      "rating": "4.2",
+      "dec": "Men Printed Hooded Neck Blue, Black T-Shirt",
+      "price": 999,
+      "defaultSize": "L",
+      "size": [
+        "S",
+        "L",
+        "M",
+        "XL",
+        "XLL"
+      ],
+      "like": false
+    },
+    {
+      "name": "EyeBogler ",
+      "image": "https://cdn.shopify.com/s/files/1/0769/5345/products/25183982-df2c-42a2-abd0-5041f50e5a43_580x.jpg?v=1586111517",
+      "rating": "4.2",
+      "dec": "Men Printed Hooded Neck Blue, Black T-Shirt",
+      "price": 999,
+      "defaultSize": "L",
+      "size": [
+        "S",
+        "L",
+        "M",
+        "XL",
+        "XLL"
+      ],
+      "like": false
+    }
+  ]
+}

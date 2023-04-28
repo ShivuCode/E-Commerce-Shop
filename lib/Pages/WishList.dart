@@ -1,0 +1,39 @@
+import 'package:e_commerce/constants.dart';
+import 'package:flutter/material.dart';
+class WishList extends StatefulWidget {
+  const WishList({Key? key}) : super(key: key);
+
+  @override
+  State<WishList> createState() => _WishListState();
+}
+
+class _WishListState extends State<WishList> {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(backgroundColor: mainColor,
+        title: const Text("My WishList"),
+        centerTitle:true,
+      ),
+      body: wishList.isEmpty?const Center(child: Text("Empty Wishlist")):GridView.builder(itemCount:wishList.length,gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+        crossAxisCount: 2,childAspectRatio: 2/3.2
+      ), itemBuilder: (_,i){
+        return Container(
+          padding: const EdgeInsets.all(5),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              Container(height: MediaQuery.of(context).size.height*0.25,decoration:BoxDecoration(image:DecorationImage(image: NetworkImage("${wishList[i]["image"]}"),fit:BoxFit.cover))),
+              Text("${wishList[i]["name"]}",style: const TextStyle(fontSize: 18),),
+              Text("${wishList[i]["dec"]}",style: const TextStyle(
+        color: Colors.grey, fontSize: 12),),
+              Text("₹ ${wishList[i]["price"]}",style: const TextStyle(fontWeight: FontWeight.bold),)
+            ],
+          ),
+        );
+
+      }),
+    );
+  }
+}
