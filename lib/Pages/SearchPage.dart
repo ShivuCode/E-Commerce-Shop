@@ -117,7 +117,7 @@ class _SharedPageState extends State<SharedPage> {
                                   "₹ ${display[i]["price"]}",
                                   style: const TextStyle(
                                       fontWeight: FontWeight.bold),
-                                )
+                                ),
                               ],
                             ),
                           ),

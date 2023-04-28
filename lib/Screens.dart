@@ -1,4 +1,5 @@
 import 'package:e_commerce/Pages/Account.dart';
+import 'package:e_commerce/Pages/AddToCardPage.dart';
 import 'package:e_commerce/Pages/CategoriesPage.dart';
 import 'package:e_commerce/Pages/EarningPage.dart';
 import 'package:e_commerce/Pages/HomePage.dart';
@@ -96,7 +97,9 @@ class _ScreensState extends State<Screens> with TickerProviderStateMixin {
                   IconButton(
                     icon: const Icon(Icons.shopping_bag_outlined,
                         color: Colors.white),
-                    onPressed: () {},
+                    onPressed: () {
+                      nextScreen(context, const AddToCard());
+                    },
                   ),
                   width(10)
                 ]),

@@ -14,7 +14,7 @@ class Categories extends StatefulWidget {
 class _CategoriesState extends State<Categories> {
   @override
   Widget build(BuildContext context) {
-    double size=MediaQuery.of(context).size.width;
+    var size=MediaQuery.of(context).size;
     return Scaffold(body:widget.search.isEmpty
         ? const Center(
       child: Text(
@@ -27,8 +27,8 @@ class _CategoriesState extends State<Categories> {
       child: GridView.builder(
         itemCount: widget.search.length,
         gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-            crossAxisCount: size > 600 ? 6 : 2,
-            childAspectRatio: 2 / 3.2),
+            crossAxisCount: size.width > 600 ? 4 : 2,
+            childAspectRatio: size.width<800?2/3.2:2/3),
         itemBuilder: (_, i) => GestureDetector(
             onTap: () {
               nextScreen(
@@ -52,13 +52,15 @@ class _CategoriesState extends State<Categories> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   mainAxisSize: MainAxisSize.min,
                   children: [
-                    Container(
-                        height: MediaQuery.of(context).size.height*0.25,
-                        decoration: BoxDecoration(
-                            image: DecorationImage(
-                                image: NetworkImage(
-                                    "${widget.search[i]["image"]}"),
-                                fit: BoxFit.cover))),
+                    AspectRatio(
+                      aspectRatio: 8/9,
+                      child: Container(
+                          decoration: BoxDecoration(
+                              image: DecorationImage(
+                                  image: NetworkImage(
+                                      "${widget.search[i]["image"]}"),
+                                  fit: BoxFit.cover))),
+                    ),
                     Text(
                       "${widget.search[i]["name"]}",
                       style: const TextStyle(
