@@ -24,22 +24,20 @@ class _SharedPageState extends State<SharedPage> {
 
   @override
   Widget build(BuildContext context) {
-    var size = MediaQuery.of(context).size.width;
+    var size = MediaQuery.of(context).size;
     return Container(
       color: Colors.white,
       padding: const EdgeInsets.symmetric(vertical: 10),
       child: Scaffold(
           backgroundColor: Colors.white,
-          appBar: size > 600
-              ? null
-              : PreferredSize(
+          appBar: PreferredSize(
                   preferredSize: const Size(double.infinity, 50),
                   child: Row(
                     mainAxisSize: MainAxisSize.min,
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       SizedBox(
-                          width: size * 0.95,
+                          width: size.width * 0.95,
                           height: 60,
                           child: TextField(
                             onChanged: (value) => update(value),
@@ -69,8 +67,8 @@ class _SharedPageState extends State<SharedPage> {
                   child: GridView.builder(
                     itemCount: display.length,
                     gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                        crossAxisCount: size > 600 ? 4 : 2,
-                        childAspectRatio: 2 / 3.2),
+                        crossAxisCount: size.width > 600 ? 4 : 2,
+                        childAspectRatio: size.width<800?2/3.2:2/3),
                     itemBuilder: (_, i) => GestureDetector(
                         onTap: () {
                           nextScreen(
@@ -94,13 +92,15 @@ class _SharedPageState extends State<SharedPage> {
                               crossAxisAlignment: CrossAxisAlignment.start,
                               mainAxisSize: MainAxisSize.min,
                               children: [
-                                Container(
-                                    height: MediaQuery.of(context).size.height*0.25,
-                                    decoration: BoxDecoration(
-                                        image: DecorationImage(
-                                            image: NetworkImage(
-                                                "${display[i]["image"]}"),
-                                            fit: BoxFit.cover))),
+                                AspectRatio(
+                                  aspectRatio: 8/9,
+                                  child: Container(
+                                      decoration: BoxDecoration(
+                                          image: DecorationImage(
+                                              image: NetworkImage(
+                                                  "${display[i]["image"]}"),
+                                              fit: BoxFit.cover))),
+                                ),
                                 Text(
                                   "${display[i]["name"]}",
                                   style: const TextStyle(
@@ -109,8 +109,8 @@ class _SharedPageState extends State<SharedPage> {
                                 ),
                                 Text(
                                   "${display[i]["dec"]}",
-                                  style: const TextStyle(
-                                      color: Colors.grey, fontSize: 12),
+                                  style: TextStyle(
+                                      color: Colors.grey, fontSize: size.width<800?10:13),
                                 ),
                                 height(5),
                                 Text(

@@ -38,58 +38,51 @@ class _ScreensState extends State<Screens> with TickerProviderStateMixin {
     controller = TabController(length: 5, vsync: this);
     super.initState();
   }
+  final newWe=Container(
+    height: 50,
+    color: Colors.black,
+  );
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      endDrawer: newWe,
+      drawer: size>600? Drawer(
+        width: 60,
+        backgroundColor: Colors.white,
+        child:ListView(
+          children: [
+            ListTile(leading: const Icon(CupertinoIcons.home),onTap: (){
+              setState(() {
+                currentPage=0;
+              });
+            },),
+            ListTile(leading:const Icon(Icons.manage_search_sharp),onTap: (){
+              setState(() {
+                currentPage=1;
+              });
+            },),
+            ListTile(leading: const Icon(CupertinoIcons.share),onTap: (){
+              setState(() {
+                currentPage=2;
+              });
+            },),
+            ListTile(leading:const Icon(Icons.currency_rupee,),onTap: (){
+              setState(() {
+                currentPage=3;
+              });
+            },),
+            ListTile(leading:const Icon(Icons.person),onTap: (){
+              setState(() {
+                currentPage=4;
+              });
+            },),
+
+          ],
+        )
+      ):null,
       //giving appbar depends on screen
-      appBar: size > 600
-          ? AppBar(toolbarHeight: 70,
-              foregroundColor: Colors.white,
-              backgroundColor: mainColor,
-              title: const Text("VStore"),
-              actions: [
-                Container(
-                  height: 50,
-                  width: 400,
-                  alignment: Alignment.center,
-                  child: TextField(
-                    decoration: InputDecoration(
-                        filled: true,
-                        fillColor: Colors.white,
-                        contentPadding: EdgeInsets.zero,
-                        border: OutlineInputBorder(
-                          borderSide: const BorderSide(color: Colors.grey),
-                          borderRadius: BorderRadius.circular(4),
-                        ),
-                        prefixIcon: const Icon(Icons.search),
-                        prefixIconColor: Colors.grey,
-                        hintText: "search for shoes",
-                        suffixIcon: const Icon(Icons.camera_alt_outlined,
-                            color: Colors.black45)),
-                  ),
-                ),
-                TextButton(
-                  child: Text("Search", style: buttonStyle),
-                  onPressed: () {
-                    change(2);
-                  },
-                ),
-                TextButton(
-                  child: Text("Earnings", style: buttonStyle),
-                  onPressed: () {
-                    change(3);
-                  },
-                ),
-                TextButton(
-                  child: Text("Account", style: buttonStyle),
-                  onPressed: () {
-                    change(4);
-                  },
-                )
-              ],
-            )
-          : AppBar(
+      appBar: AppBar(
               backgroundColor: mainColor,
               title: const Text("VStore"),
               centerTitle: true,

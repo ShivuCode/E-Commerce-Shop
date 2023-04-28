@@ -27,7 +27,7 @@ class _CategoriesState extends State<Categories> {
       child: GridView.builder(
         itemCount: widget.search.length,
         gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-            crossAxisCount: size > 600 ? 4 : 2,
+            crossAxisCount: size > 600 ? 6 : 2,
             childAspectRatio: 2 / 3.2),
         itemBuilder: (_, i) => GestureDetector(
             onTap: () {

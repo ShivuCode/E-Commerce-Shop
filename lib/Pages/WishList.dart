@@ -10,13 +10,15 @@ class WishList extends StatefulWidget {
 class _WishListState extends State<WishList> {
   @override
   Widget build(BuildContext context) {
+    late Size size=MediaQuery.of(context).size;
     return Scaffold(
       appBar: AppBar(backgroundColor: mainColor,
         title: const Text("My WishList"),
         centerTitle:true,
       ),
-      body: wishList.isEmpty?const Center(child: Text("Empty Wishlist")):GridView.builder(itemCount:wishList.length,gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-        crossAxisCount: 2,childAspectRatio: 2/3.2
+      body: wishList.isEmpty?const Center(child: Text("Empty Wishlist")):GridView.builder(itemCount:wishList.length,gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+          crossAxisCount: size.width > 600 ? 4 : 2,
+          childAspectRatio: size.width<800?2/3.2:2/3
       ), itemBuilder: (_,i){
         return Container(
           padding: const EdgeInsets.all(5),
@@ -24,7 +26,15 @@ class _WishListState extends State<WishList> {
             crossAxisAlignment: CrossAxisAlignment.start,
             mainAxisSize: MainAxisSize.min,
             children: [
-              Container(height: MediaQuery.of(context).size.height*0.25,decoration:BoxDecoration(image:DecorationImage(image: NetworkImage("${wishList[i]["image"]}"),fit:BoxFit.cover))),
+              AspectRatio(
+                aspectRatio: 8/9,
+                child: Container(
+                    decoration: BoxDecoration(
+                        image: DecorationImage(
+                            image: NetworkImage(
+                                "${wishList[i]["image"]}"),
+                            fit: BoxFit.cover))),
+              ),
               Text("${wishList[i]["name"]}",style: const TextStyle(fontSize: 18),),
               Text("${wishList[i]["dec"]}",style: const TextStyle(
         color: Colors.grey, fontSize: 12),),

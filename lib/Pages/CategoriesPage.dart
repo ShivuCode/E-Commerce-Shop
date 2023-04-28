@@ -17,8 +17,8 @@ class CategoriesPage extends StatelessWidget {
     return Scaffold(
       body: category.isEmpty?Center():Padding(
         padding: const EdgeInsets.all(10.0),
-        child: GridView.builder(itemCount:category.length,gridDelegate:const SliverGridDelegateWithFixedCrossAxisCount(
-          crossAxisCount: 2,
+        child: GridView.builder(itemCount:category.length,gridDelegate:SliverGridDelegateWithFixedCrossAxisCount(
+          crossAxisCount: MediaQuery.of(context).size.width>600?6:2,
           crossAxisSpacing: 6,
           mainAxisSpacing: 8
         ), itemBuilder: (_,i)=>GestureDetector(

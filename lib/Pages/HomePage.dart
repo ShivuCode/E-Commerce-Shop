@@ -13,7 +13,16 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  bool isNext = true;
+
+  int pos=0;
+  late PageController _controller;
+  List sell=[
+    "https://thumbs.dreamstime.com/b/weekend-sale-advertising-banner-typography-blue-background-radial-circles-design-shopping-discount-social-media-promo-179200554.jpg",
+  "https://th.bing.com/th/id/OIP.sWCajkiJHyq3RKMz5XhAjQHaCh?pid=ImgDet&rs=1",
+    "https://mir-s3-cdn-cf.behance.net/project_modules/max_1200/cb5eea73752287.5c139bb3b0d57.jpg",
+    "https://mir-s3-cdn-cf.behance.net/project_modules/max_1200/e5e21973752287.5c13a46244733.jpg",
+    "https://static.vecteezy.com/system/resources/previews/000/178/147/large_2x/vector-biggest-sale-banner-with-yellow-and-purple-background.jpg"
+  ];
   readData() {
     DefaultAssetBundle.of(context).loadString("json/stock.json").then((value) {
       setState(() {
@@ -27,90 +36,152 @@ class _HomePageState extends State<HomePage> {
       });
     });
   }
-
+  testing() async {
+    while (true) {
+      try {
+        await Future.delayed(const Duration(seconds: 3));
+        setState(() {
+          _controller.animateToPage(
+            pos,
+            duration: const Duration(milliseconds: 350),
+            curve: Curves.easeIn,
+          );
+        });
+      } catch (e) {} finally {
+        if (pos != sell.length - 1) {
+          setState(() {
+            pos = pos + 1;
+          });
+        }
+        else {
+          setState(() {
+            pos = 0;
+          });
+        }
+      }
+    }
+  }
   @override
   void initState() {
+    _controller=PageController(initialPage: pos);
     readData();
+    testing();
     super.initState();
   }
 
   @override
   Widget build(BuildContext context) {
+    final size=MediaQuery.of(context).size.width;
     return Padding(
       padding: const EdgeInsets.all(18.0),
       child: SingleChildScrollView(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            SizedBox(
-              height: 220,
-              child: menList.isEmpty?Container():PageView.builder(
-                controller: PageController(initialPage: 0),
-                itemCount: 5,
-                scrollDirection: Axis.horizontal,
-                  itemBuilder: (_, i) => Container(
-                    margin: const EdgeInsets.symmetric(horizontal: 3),
-                    padding: const EdgeInsets.all(15),
-                    width: double.infinity,
-                    height: 220,
-                    alignment: Alignment.bottomRight,
-                    decoration: BoxDecoration(
-                        boxShadow: [
-                          BoxShadow(
-                              color: Colors.grey.shade200,
-                              blurRadius: 5,
-                              offset: const Offset(0, 2))
-                        ],
-                        borderRadius: BorderRadius.circular(20.0),
-                        image: DecorationImage(
-                            image: NetworkImage("${menList[i]["image"]}"),
-                            opacity: 0.7,
-                            fit: BoxFit.fill)),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      mainAxisSize: MainAxisSize.min,
-                      children: [
-                        Container(
-                          height: 20,
-                          padding: const EdgeInsets.all(2),
-                          decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(5),
-                              gradient: LinearGradient(colors: [
-                                mainColor,
-                                mainColor.withOpacity(0.4)
-                              ])),
-                          child: Text(
-                            "${menList[i]["name"]}",
-                            style:const TextStyle(color: Colors.white),
-                          ),
-                        ),
-                        height(10.0),
-                        const Text(
-                          "New Arrive",
-                          style: TextStyle(
-                              color: Colors.white,
-                              fontSize: 26,
-                              fontWeight: FontWeight.bold),
-                        ),
-                        height(10),
-                        Text(
-                          "${menList[i]["dec"]}",
-                          style: const TextStyle(color: Colors.white),
-                        ),
-                        height(10),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Icon(i==0?Icons.circle:CupertinoIcons.circle,size: 10,color: Colors.white,),
-                            Icon(i==1?Icons.circle:CupertinoIcons.circle,size: 10,color: Colors.white,),
-                            Icon(i==2?Icons.circle:CupertinoIcons.circle,size: 10,color: Colors.white,),
-                            Icon(i==3?Icons.circle:CupertinoIcons.circle,size: 10,color: Colors.white,),
-                            Icon(i==4?Icons.circle:CupertinoIcons.circle,size: 10,color: Colors.white,),
+            Visibility(
+              visible: size<600?true:false,
+              child: SizedBox(
+                height: 220,
+                child: menList.isEmpty?Container():PageView.builder(
+                  controller: _controller,
+                  itemCount: 5,
+                  scrollDirection: Axis.horizontal,
+                    itemBuilder: (_, i) => Container(
+                      margin: const EdgeInsets.symmetric(horizontal: 3),
+                      padding: const EdgeInsets.all(15),
+                      width: double.infinity,
+                      height: 220,
+                      alignment: Alignment.bottomRight,
+                      decoration: BoxDecoration(
+                          boxShadow: [
+                            BoxShadow(
+                                color: Colors.grey.shade200,
+                                blurRadius: 5,
+                                offset: const Offset(0, 2))
                           ],
-                        )
-                      ],
-                    ),
-                  )),
+                          borderRadius: BorderRadius.circular(20.0),
+                          image: DecorationImage(
+                              image: NetworkImage("${menList[i]["image"]}"),
+                              opacity: 0.7,
+                              fit: BoxFit.fill)),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          Container(
+                            height: 20,
+                            padding: const EdgeInsets.all(2),
+                            decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(5),
+                                gradient: LinearGradient(colors: [
+                                  mainColor,
+                                  mainColor.withOpacity(0.4)
+                                ])),
+                            child: Text(
+                              "${menList[i]["name"]}",
+                              style:const TextStyle(color: Colors.white),
+                            ),
+                          ),
+                          height(10.0),
+                          const Text(
+                            "New Arrive",
+                            style: TextStyle(
+                                color: Colors.white,
+                                fontSize: 26,
+                                fontWeight: FontWeight.bold),
+                          ),
+                          height(10),
+                          Text(
+                            "${menList[i]["dec"]}",
+                            style: const TextStyle(color: Colors.white),
+                          ),
+                          height(10),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Icon(i==0?Icons.circle:CupertinoIcons.circle,size: 10,color: Colors.white,),
+                              Icon(i==1?Icons.circle:CupertinoIcons.circle,size: 10,color: Colors.white,),
+                              Icon(i==2?Icons.circle:CupertinoIcons.circle,size: 10,color: Colors.white,),
+                              Icon(i==3?Icons.circle:CupertinoIcons.circle,size: 10,color: Colors.white,),
+                              Icon(i==4?Icons.circle:CupertinoIcons.circle,size: 10,color: Colors.white,),
+                            ],
+                          )
+                        ],
+                      ),
+                    )),
+              ),
+            ),
+            Visibility(
+              visible: size<600?false:true,
+              child: Container(
+                height: 250,
+                margin: const EdgeInsets.symmetric(horizontal: 2),
+                padding: const EdgeInsets.all(15),
+                width: double.infinity,
+                alignment: Alignment.bottomCenter,
+                decoration: BoxDecoration(
+                    boxShadow: [
+                      BoxShadow(
+                          color: Colors.grey.shade200,
+                          blurRadius: 5,
+                          offset: const Offset(0, 2))
+                    ],
+                    borderRadius: BorderRadius.circular(5.0),
+                    image: DecorationImage(
+                        image:NetworkImage("${sell[pos]}"),
+                        opacity: 0.7,
+                        fit: BoxFit.fill),),
+                child:  Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Icon(pos==0?Icons.circle:CupertinoIcons.circle,size: 10,color: Colors.white,),
+                    Icon(pos==1?Icons.circle:CupertinoIcons.circle,size: 10,color: Colors.white,),
+                    Icon(pos==2?Icons.circle:CupertinoIcons.circle,size: 10,color: Colors.white,),
+                    Icon(pos==3?Icons.circle:CupertinoIcons.circle,size: 10,color: Colors.white,),
+                    Icon(pos==4?Icons.circle:CupertinoIcons.circle,size: 10,color: Colors.white,),
+                  ],
+                ),
+              ),
             ),
             height(20),
             SizedBox(
