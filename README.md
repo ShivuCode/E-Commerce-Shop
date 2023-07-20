@@ -1,16 +1,13 @@
-# e_commerce
+#Ecommerce
+#Clothes Shopping App
+<p float="left">
+  <img src="https://github.com/ShivuCode/E-Commerce-Shop/blob/master/assets/home.jpeg?raw=true" width="200" height="450"> 
 
-A new Flutter project.
-
-## Getting Started
-
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+ <img src="https://github.com/ShivuCode/E-Commerce-Shop/blob/master/assets/categorie.jpeg?raw=true" width="200" height="450">
+ <img src="https://github.com/ShivuCode/E-Commerce-Shop/blob/master/assets/search.jpeg?raw=true" width="200" height="450"> 
+ <img src="https://github.com/ShivuCode/E-Commerce-Shop/blob/master/assets/account.jpeg?raw=true" width="200" height="450">
+ <img src="https://github.com/ShivuCode/E-Commerce-Shop/blob/master/assets/item.jpeg?raw=true" width="200" height="450">
+ <img src="https://github.com/ShivuCode/E-Commerce-Shop/blob/master/assets/wishlist.jpeg?raw=true" width="200" height="450">
+ <img src="https://github.com/ShivuCode/E-Commerce-Shop/blob/master/assets/addtocard.jpeg?raw=true" width="200" height="450"> 
+ 
+ </p>
