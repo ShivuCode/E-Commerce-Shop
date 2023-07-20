@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import 'package:e_commerce/Pages/Categories.dart';
 import 'package:e_commerce/Pages/ItemPage.dart';
 import 'package:e_commerce/constants.dart';
 import 'package:flutter/cupertino.dart';
@@ -188,11 +189,16 @@ class _HomePageState extends State<HomePage> {
                 height: 50,
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: const [
-                    Text("Popular", style: TextStyle(fontSize: 26)),
-                    Text(
-                      "See all >",
-                      style: TextStyle(color: Colors.grey),
+                  children: [
+                    const Text("Popular", style: TextStyle(fontSize: 26)),
+                    TextButton(
+                      onPressed: (){
+                        nextScreen(context, Categories(search: allItems));
+                      },
+                      child: const Text(
+                        "See all >",
+                        style: TextStyle(color: Colors.grey),
+                      ),
                     )
                   ],
                 )),

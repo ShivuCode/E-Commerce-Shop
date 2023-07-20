@@ -20,7 +20,7 @@ class _ScreensState extends State<Screens> with TickerProviderStateMixin {
   late double size = MediaQuery.of(context).size.width;
   int currentPage = 0;
   late TabController controller;
-  List pages =  [
+  List pages = [
     HomePage(),
     CategoriesPage(),
     SharedPage(),
@@ -34,81 +34,94 @@ class _ScreensState extends State<Screens> with TickerProviderStateMixin {
       currentPage = i;
     });
   }
+
   @override
   void initState() {
     controller = TabController(length: 5, vsync: this);
     super.initState();
   }
-  final newWe=Container(
-    height: 50,
-    color: Colors.black,
-  );
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      endDrawer: newWe,
-      drawer: size>600? Drawer(
-        width: 60,
-        backgroundColor: Colors.white,
-        child:ListView(
-          children: [
-            ListTile(leading: const Icon(CupertinoIcons.home),onTap: (){
-              setState(() {
-                currentPage=0;
-              });
-            },),
-            ListTile(leading:const Icon(Icons.manage_search_sharp),onTap: (){
-              setState(() {
-                currentPage=1;
-              });
-            },),
-            ListTile(leading: const Icon(CupertinoIcons.share),onTap: (){
-              setState(() {
-                currentPage=2;
-              });
-            },),
-            ListTile(leading:const Icon(Icons.currency_rupee,),onTap: (){
-              setState(() {
-                currentPage=3;
-              });
-            },),
-            ListTile(leading:const Icon(Icons.person),onTap: (){
-              setState(() {
-                currentPage=4;
-              });
-            },),
-
-          ],
-        )
-      ):null,
-      //giving appbar depends on screen
-      appBar: AppBar(
-              backgroundColor: mainColor,
-              title: const Text("VStore"),
-              centerTitle: true,
-              actions: [
-                  IconButton(
-                      icon: const Icon(CupertinoIcons.heart,
-                          color: Colors.white),
-                      onPressed: () {
-                        nextScreen(context, const WishList());
-                      }),
-                  IconButton(
-                    icon: const Icon(Icons.shopping_bag_outlined,
-                        color: Colors.white),
-                    onPressed: () {
-                      nextScreen(context, const AddToCard());
+      drawer: size > 600
+          ? Drawer(
+              width: 60,
+              backgroundColor: Colors.white,
+              child: ListView(
+                children: [
+                  ListTile(
+                    leading: const Icon(CupertinoIcons.home),
+                    onTap: () {
+                      setState(() {
+                        currentPage = 0;
+                      });
                     },
                   ),
-                  width(10)
-                ]),
+                  ListTile(
+                    leading: const Icon(Icons.manage_search_sharp),
+                    onTap: () {
+                      setState(() {
+                        currentPage = 1;
+                      });
+                    },
+                  ),
+                  ListTile(
+                    leading: const Icon(CupertinoIcons.share),
+                    onTap: () {
+                      setState(() {
+                        currentPage = 2;
+                      });
+                    },
+                  ),
+                  ListTile(
+                    leading: const Icon(
+                      Icons.currency_rupee,
+                    ),
+                    onTap: () {
+                      setState(() {
+                        currentPage = 3;
+                      });
+                    },
+                  ),
+                  ListTile(
+                    leading: const Icon(Icons.person),
+                    onTap: () {
+                      setState(() {
+                        currentPage = 4;
+                      });
+                    },
+                  ),
+                ],
+              ))
+          : null,
+      //giving appbar depends on screen
+      appBar: AppBar(
+          backgroundColor: mainColor,
+          title: const Text("VStore"),
+          centerTitle: true,
+          actions: [
+            IconButton(
+                icon: const Icon(CupertinoIcons.heart, color: Colors.white),
+                onPressed: () {
+                  nextScreen(context, const WishList());
+                }),
+            IconButton(
+              icon:
+                  const Icon(Icons.shopping_bag_outlined, color: Colors.white),
+              onPressed: () {
+                nextScreen(context, const AddToCard());
+              },
+            ),
+            width(10)
+          ]),
       //now writing main code for screens
       body: pages[currentPage],
       //giving bottom Navigation depends on screen
       bottomNavigationBar: size < 600
           ? BottomNavigationBar(
-              fixedColor: Colors.grey,
+              currentIndex: currentPage,
+              selectedItemColor: mainColor,
               unselectedItemColor: Colors.grey,
               showUnselectedLabels: true,
               onTap: (index) {
@@ -118,40 +131,33 @@ class _ScreensState extends State<Screens> with TickerProviderStateMixin {
               },
               items: const [
                   BottomNavigationBarItem(
-                      icon: Icon(
-                        Icons.home_outlined,
-                        color: Colors.grey,
-                      ),
-                      label: "Home",
-                      activeIcon: Icon(
-                        Icons.home,
-                        color: Colors.grey,
-                      )),
+                    icon: Icon(
+                      Icons.home_outlined,
+                    ),
+                    label: "Home",
+                  ),
                   BottomNavigationBarItem(
-                      icon: Icon(Icons.manage_search_sharp, color: Colors.grey),
-                      label: "Categories"),
+                    icon: Icon(Icons.manage_search_sharp),
+                    label: "Categories",
+                  ),
                   BottomNavigationBarItem(
-                      icon: Icon(CupertinoIcons.share, color: Colors.grey),
-                      label: "Search",
-                      activeIcon: Icon(
-                        CupertinoIcons.share_solid,
-                        color: Colors.grey,
-                      )),
+                    icon: Icon(CupertinoIcons.share),
+                    label: "Search",
+                  ),
                   BottomNavigationBarItem(
-                      icon: Icon(
-                        Icons.currency_rupee,
-                        color: Colors.grey,
-                      ),
-                      label: "Earnings"),
+                    icon: Icon(
+                      Icons.currency_rupee,
+                    ),
+                    label: "Earnings",
+                  ),
                   BottomNavigationBarItem(
-                      icon: Icon(
-                        Icons.person,
-                        color: Colors.grey,
-                      ),
-                      label: "Account")
+                    icon: Icon(
+                      Icons.person,
+                    ),
+                    label: "Account",
+                  )
                 ])
           : null,
     );
   }
-
 }

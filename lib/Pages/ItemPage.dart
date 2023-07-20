@@ -29,6 +29,7 @@ class _ItemState extends State<Item> {
               ElevatedButton(
                 onPressed: () {
                   setState(() {
+                    ScaffoldMessenger.of(context).showSnackBar(const SnackBar(duration:Duration(milliseconds: 300),content:Text("Product Added",style: TextStyle(color: Colors.white)),backgroundColor: mainColor,));
                     addCard.add(widget.item);
                   });
                 },
@@ -98,11 +99,29 @@ class _ItemState extends State<Item> {
                         children: [
                           IconButton(
                               onPressed: () {
-                                setState(() {
-                                  wishList.add(widget.item);
-                                  widget.item['like']=true;
-                                  print(widget.item["like"]);
-                                });
+                                if(widget.item['like']!=true) {
+                                  setState(() {
+                                    ScaffoldMessenger.of(context).showSnackBar(
+                                        const SnackBar(
+                                          content: Text("Added in WishList"),
+                                          backgroundColor: mainColor,
+                                          duration: Duration(
+                                              milliseconds: 300),));
+                                    wishList.add(widget.item);
+                                    widget.item['like'] = true;
+                                  });
+                                }else{
+                                  setState(() {
+                                    ScaffoldMessenger.of(context).showSnackBar(
+                                        const SnackBar(
+                                          content: Text("Removed from WishList"),
+                                          backgroundColor: mainColor,
+                                          duration: Duration(
+                                              milliseconds: 300),));
+                                    wishList.add(widget.item);
+                                    widget.item['like'] = false;
+                                  });
+                                }
                               },
                               icon: widget.item["like"]? const Icon(CupertinoIcons.heart_fill,color: Colors.red,):const Icon(CupertinoIcons.heart)),
                           IconButton(
@@ -119,26 +138,26 @@ class _ItemState extends State<Item> {
                   height(5),
                   const Text("Select Size", style: TextStyle(fontSize: 16)),
                   SizedBox(
-                    height: 75,
-                    child: GridView.builder(
-                        gridDelegate:
-                            const SliverGridDelegateWithFixedCrossAxisCount(
-                                crossAxisCount: 6,
-                                crossAxisSpacing: 3,
-                                mainAxisSpacing: 2),
+                    height: 50,
+                    child: ListView.builder(
+                        scrollDirection: Axis.horizontal,
                         itemCount: widget.item["size"].length,
                         itemBuilder: (_, i) {
-                          return GestureDetector(
-                            onTap: ()=>setState(() {
-                              widget.item["defaultSize"]=widget.item["size"][i];
-                            }),
-                            child: Container(
-                              alignment: Alignment.center,
-                              decoration: BoxDecoration(
-                                 border:Border.all(color:widget.item['defaultSize'].toString()=="${widget.item["size"][i]}"?mainColor: Colors.grey),
-                              ),child:  Text("${widget.item["size"][i]}"),
+                          return Padding(
+                            padding: const EdgeInsets.symmetric(horizontal: 5,vertical: 5),
+                            child: GestureDetector(
+                              onTap: ()=>setState(() {
+                                widget.item["defaultSize"]=widget.item["size"][i];
+                              }),
+                              child: Container(
+                                height: 50,width: 50,
+                                alignment: Alignment.center,
+                                decoration: BoxDecoration(
+                                  border:Border.all(color:widget.item['defaultSize'].toString()=="${widget.item["size"][i]}"?mainColor: Colors.grey),
+                                ),child:  Text("${widget.item["size"][i]}"),
                               ),
-                            );
+                            ),
+                          );
                         }),
                   ),
                   height(10),
@@ -328,7 +347,7 @@ class _ItemState extends State<Item> {
                                         borderRadius: BorderRadius.circular(15),
                                         image: DecorationImage(
                                             image:
-                                            AssetImage("${recent[i]["image"]}"),
+                                            NetworkImage("${recent[i]["image"]}"),
                                             fit: BoxFit.cover)),
                                   ),
                                   Text(
@@ -407,11 +426,31 @@ class _ItemState extends State<Item> {
                                 children: [
                                   IconButton(
                                       onPressed: () {
-                                        setState(() {
-                                          wishList.add(widget.item);
-                                          widget.item['like']=true;
-                                          print(widget.item["like"]);
-                                        });
+                                        if(widget.item['like']!=true) {
+                                          setState(() {
+                                            ScaffoldMessenger.of(context).showSnackBar(
+                                                const SnackBar(
+                                                  content: Text("Added in WishList"),
+                                                  backgroundColor: mainColor,
+                                                  duration: Duration(
+                                                      milliseconds: 300),));
+                                            if(!wishList.contains(widget.item)){
+                                              wishList.add(widget.item);
+                                            }
+                                            widget.item['like'] = true;
+                                          });
+                                        }else{
+                                          setState(() {
+                                            ScaffoldMessenger.of(context).showSnackBar(
+                                                const SnackBar(
+                                                  content: Text("Removed from WishList"),
+                                                  backgroundColor: mainColor,
+                                                  duration: Duration(
+                                                      milliseconds: 300),));
+                                            wishList.add(widget.item);
+                                            widget.item['like'] = false;
+                                          });
+                                        }
                                       },
                                       icon: widget.item["like"]? const Icon(CupertinoIcons.heart_fill,color: Colors.red,):const Icon(CupertinoIcons.heart)),
                                   IconButton(
@@ -424,24 +463,24 @@ class _ItemState extends State<Item> {
                           height(5),
                           const Text("Select Size", style: TextStyle(fontSize: 16)),
                           SizedBox(
-                            height: 100,
-                            child: GridView.builder(
-                                gridDelegate:
-                                const SliverGridDelegateWithFixedCrossAxisCount(
-                                    crossAxisCount: 7,
-                                    crossAxisSpacing: 2,
-                                    mainAxisSpacing: 2),
+                            height: 50,
+                            child: ListView.builder(
+                              scrollDirection: Axis.horizontal,
                                 itemCount: widget.item["size"].length,
                                 itemBuilder: (_, i) {
-                                  return GestureDetector(
-                                    onTap: ()=>setState(() {
-                                      widget.item["defaultSize"]=widget.item["size"][i];
-                                    }),
-                                    child: Container(
-                                      alignment: Alignment.center,
-                                      decoration: BoxDecoration(
-                                        border:Border.all(color:widget.item['defaultSize'].toString()=="${widget.item["size"][i]}"?mainColor: Colors.grey),
-                                      ),child:  Text("${widget.item["size"][i]}"),
+                                  return Padding(
+                                    padding: const EdgeInsets.symmetric(horizontal: 5,vertical: 5),
+                                    child: GestureDetector(
+                                      onTap: ()=>setState(() {
+                                        widget.item["defaultSize"]=widget.item["size"][i];
+                                      }),
+                                      child: Container(
+                                        height: 50,width: 50,
+                                        alignment: Alignment.center,
+                                        decoration: BoxDecoration(
+                                          border:Border.all(color:widget.item['defaultSize'].toString()=="${widget.item["size"][i]}"?mainColor: Colors.grey),
+                                        ),child:  Text("${widget.item["size"][i]}"),
+                                      ),
                                     ),
                                   );
                                 }),
@@ -633,7 +672,7 @@ class _ItemState extends State<Item> {
                                                 borderRadius: BorderRadius.circular(15),
                                                 image: DecorationImage(
                                                     image:
-                                                    AssetImage("${recent[i]["image"]}"),
+                                                    NetworkImage("${recent[i]["image"]}"),
                                                     fit: BoxFit.cover)),
                                           ),
                                           Text(

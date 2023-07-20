@@ -1,16 +1,15 @@
 import 'package:e_commerce/Screens.dart';
 import 'package:e_commerce/constants.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
-void main() {
-  SystemChrome.setSystemUIOverlayStyle(
-    const SystemUiOverlayStyle(
+Future<void> main() async {
+  SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
       statusBarColor: mainColor,
       systemNavigationBarColor: Colors.white,
-      systemNavigationBarIconBrightness: Brightness.dark
-    )
-  );
+      systemNavigationBarIconBrightness: Brightness.dark));
   ErrorWidget.builder = (FlutterErrorDetails details) {
     return Container(
       padding: const EdgeInsets.all(8.0),
@@ -30,10 +29,8 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-        primaryColor: mainColor
-      ),
-      home: Screens(),
+      theme: ThemeData(primaryColor: mainColor),
+      home: const Screens(),
     );
   }
 }

@@ -1,3 +1,4 @@
+
 import 'package:e_commerce/constants.dart';
 import 'package:flutter/material.dart';
 
@@ -10,18 +11,21 @@ class AddToCard extends StatefulWidget {
 
 class _AddToCardState extends State<AddToCard> {
   int qty = 1;
-  int sum=0;
-  update(i,int qty){
-
-      sum=addCard[i]["price"];
-      sum*=qty;
+  double totalPrice=0.0;
+  void calculateTotalPrice() {
+    totalPrice = 0.0;
+    for (var product in addCard) {
+      totalPrice += product["price"];
+    }
   }
   @override
   void initState() {
+    calculateTotalPrice();
     super.initState();
   }
   @override
   Widget build(BuildContext context) {
+    calculateTotalPrice();
     return Scaffold(
       appBar: AppBar(backgroundColor: mainColor),
       bottomNavigationBar: BottomAppBar(
@@ -29,7 +33,7 @@ class _AddToCardState extends State<AddToCard> {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
-              const Text("₹ 2999.0",style: TextStyle(fontWeight: FontWeight.bold,fontSize: 20),),
+              Text("₹ $totalPrice",style: const TextStyle(fontWeight: FontWeight.bold,fontSize: 20),),
               ElevatedButton(
                 onPressed: () {},
                 style: ButtonStyle(
@@ -68,9 +72,8 @@ class _AddToCardState extends State<AddToCard> {
               child: ListView.builder(
                   itemCount: addCard.length,
                   itemBuilder: (_, i) {
-                    update(i, qty);
                     return Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 10,vertical: 10),
+                      padding: const EdgeInsets.symmetric(horizontal: 10,vertical: 20),
                       child: Column(
                         children: [
                           Row(
@@ -94,7 +97,6 @@ class _AddToCardState extends State<AddToCard> {
                                       onChanged: (value) {
                                         setState(() {
                                           qty = value!;
-                                          update(i,qty);
                                         });
                                       },
                                       items: <int>[
@@ -121,7 +123,7 @@ class _AddToCardState extends State<AddToCard> {
                                   Text("${addCard[i]["name"]}",style:const TextStyle(fontSize: 26,fontWeight: FontWeight.w400)),
                                   SizedBox(width: 200,child: Text("${addCard[i]["dec"]}",softWrap: true,)),
                                   height(5),
-                                  Text("₹ $sum",style: const TextStyle(fontWeight: FontWeight.bold),),
+                                  Text("₹ ${addCard[i]["price"]}",style: const TextStyle(fontWeight: FontWeight.bold),),
                                   Text("Size : ${addCard[i]["defaultSize"]}")
                                 ],
                               ),
@@ -129,12 +131,13 @@ class _AddToCardState extends State<AddToCard> {
                           ),
                           height(5),
                           Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                            mainAxisAlignment: MediaQuery.of(context).size.width<600?MainAxisAlignment.spaceEvenly:MainAxisAlignment.start,
                             children: [
                               GestureDetector(
                                 onTap: (){
                                   setState(() {
                                     addCard.removeAt(i);
+                                    ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text("Product removed"),backgroundColor: mainColor,duration: Duration(milliseconds: 300),));
                                   });
                                 },
                                 child: Row(
@@ -144,6 +147,8 @@ class _AddToCardState extends State<AddToCard> {
                                   ],
                                 ),
                               ),
+                              if(MediaQuery.of(context).size.width>600)
+                                width(20),
                               Row(
                                 children:[
                                   Icon(Icons.save,size: 12,color: Colors.grey[600],),
@@ -155,7 +160,8 @@ class _AddToCardState extends State<AddToCard> {
                         ],
                       ),
                     );
-                  }))
+                  })),
+          const Divider(thickness: 2)
         ],
       ),
     );
